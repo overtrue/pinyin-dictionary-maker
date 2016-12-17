@@ -5,3 +5,4 @@
 飞将数奇,fēi jiàng shù jī
 帝王将相,dì wáng jiàng xiàng
 畏首畏尾,wèi shǒu wèi wěi
+对于非汉字的部分不想处理，希望保持原样该怎样设置？
