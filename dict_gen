@@ -31,7 +31,7 @@ foreach ($lines as $line) {
     $words[$word] = "\t{$pinyin}";
 }
 
-$file = __DIR__.'/../data/words';
+$file = __DIR__.'/../pinyin/data/words';
 
 // 排序
 uksort($words, function($key1, $key2){
