@@ -7,15 +7,16 @@
 帝王将相,dì wáng jiàng xiàng
 畏首畏尾,wèi shǒu wèi wěi
 乌拉特,wù lā tè
-朝阳,cháo yáng
-绩溪,jì xī
 百色,bǎi sè
 都安,dū ān
-塔什库尔干,tǎ shí kù ěr gān
 长阳,cháng yáng
-马尾区,mǎ wěi
 三都,sān dū
 单老师,shàn lǎo shī
 打折,dǎ zhé
 折本,shé běn
 折腾,zhē téng
+朝阳区,cháo yáng qū
+绩溪,jì xī
+塔什库尔干,tǎ shí kù ěr gān
+长阳,cháng yáng
+马尾区,mǎ wěi qū
