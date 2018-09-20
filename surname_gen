@@ -1,7 +1,9 @@
 #!/usr/bin/env php
 <?php
 
-$savePath = __DIR__.'/../data/surnames';
+is_dir('./data') || mkdir('./data');
+
+$savePath = './data/surnames';
 $surnames = file(__DIR__.'/sources/surnames.txt');
 
 if (version_compare(PHP_VERSION, '7.0.0', '<')) {

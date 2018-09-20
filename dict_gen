@@ -9,29 +9,38 @@ echo "\nbuild words ...";
 exec('php '.__DIR__.'/words_gen');
 echo "Done.";
 
+echo "\nbuild surnames ...";
+exec('php '.__DIR__.'/surname_gen');
+echo "Done.";
+
 echo "\nbuild combine ...";
 exec('cat '.__DIR__.'/chars.dat >> '.__DIR__.'/words.dat');
 echo "Done.";
 $words = [];
 
-//这里对patches words.txt中拼音可能的空格转化为换行符
-$patch_words = file(__DIR__.'/patches/words.txt');
-foreach($patch_words as &$patch_word) {
-    list($word, $pinyin) = explode(",", trim($patch_word));
-    $pinyin = preg_replace("/\s+/", "\t", $pinyin);
-    $patch_word = $word . "," . $pinyin;
-}
-unset($patch_word);
+is_dir('./data') || mkdir('./data');
 
-$lines = array_merge(file(__DIR__.'/words.dat'), $patch_words);
+//这里对patches words.txt中拼音可能的空格转化为换行符
+$patchWords = file(__DIR__.'/patches/words.txt');
+$deletedWords = array_map('trim', file(__DIR__.'/patches/deleted.txt'));
+
+foreach($patchWords as &$patchWord) {
+    list($word, $pinyin) = explode(",", trim($patchWord));
+    $pinyin = preg_replace("/\s+/", "\t", $pinyin);
+    $patchWord = $word . "," . $pinyin;
+}
+unset($patchWord);
+
+$lines = array_merge(file(__DIR__.'/words.dat'), $patchWords);
 
 foreach ($lines as $line) {
     list($word, $pinyin) = explode(",", trim($line));
-
-    $words[$word] = "\t{$pinyin}";
+    if (!in_array($word, $deletedWords)) {
+        $words[$word] = "\t{$pinyin}";
+    }
 }
 
-$file = __DIR__.'/../pinyin/data/words';
+$file = './data/words';
 
 // 排序
 uksort($words, function($key1, $key2){
